@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wealth Plus - Landing Page</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css/custom-padding.css">
+</head>
+
+<body>
+    <section class="slider">
+        <header>
+            <div class="container pt-10 pb-10">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <!-- <img src="img/logo.png" class="img-responsive"> -->
+                    </div>
+                    <div class="col-md-7">
+                        <div id='cssmenu'>
+                            <ul>
+                                <li><a href='#' class="active">Home</a></li>
+                                <li><a href="#feat">Key Features</a></li>
+                                <li><a href='#video'>Video</a>
+                                <li><a href="./pdf/WealthPlusBrochure.pdf" download>Brochure</a></li>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <!-- <img src="img/logo2.png" class="wplogo"> -->
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <section class="header pt-10">
+
+            <div class="col-sm-12 heading">
+                <h2> Flexi-Savings Plan <span> A Non-Linked </span><br>
+                    Participating <span> Individual </span> Savings , Life Insurance Plan
+                </h2>
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <div class="col-md-4 col-md-offset-8 forms">
+
+
+            <script>
+                // Function to handle form submission
+                function submitForm(event) {
+                    event.preventDefault(); // Prevent the default form submission
+        
+                    // Get form inputs
+                    var fullName = document.getElementById('txtFullname').value;
+                    var email = document.getElementById('txtEmail').value;
+                    var mobile = document.getElementById('txtMobile').value;
+                    var otp = document.getElementById('txtOTP').value;
+                    var city = document.getElementById('selectCity').value;
+        
+                    // Validate form inputs
+                    // Perform necessary validations on the inputs (e.g., check if required fields are filled, validate email/phone format, etc.)
+        
+                    // Prepare the request JSON data
+                    var requestData = {
+                        "AffiliateCode": "A001",
+                        "F_Name": fullName,
+                        "M_Name": "",
+                        "L_Name": "",
+                        "MobileNumber": mobile,
+                        "AltMobileOrLandLine": "",
+                        "State": 18,
+                        "City": city,
+                        "Pincode": "",
+                        "AffiliatePitchText": "",
+                        "Age": "",
+                        "DateofBirth": "",
+                        "Income": "",
+                        "Profession": "",
+                        "MaritalStatus": "",
+                        "NumberofChildren": "",
+                        "ITRfiled": null,
+                        "NoOfYearsinBusiness": "",
+                        "LOB": "",
+                        "SubCampaignCode": "",
+                        "CampaignCode": "",
+                        "EmailID": email,
+                        "DirectAssignment": null,
+                        "AgentCode": ""
+                    };
+        
+                    // Make the API request
+                    fetch('https://sams.edelweisstokio.in/Wrapper/api/lead/WebAggregateSaveLead', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestData)
+                    })
+                        .then(function (response) {
+                            // Handle the API response
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error('Error: ' + response.status);
+                            }
+                        })
+                        .then(function (data) {
+                            // Handle the success response
+                            console.log(data);
+                            // Display a success message to the user
+                            alert('Form submitted successfully!');
+                            // Reset the form fields
+                            document.getElementById('txtFullname').value = '';
+                            document.getElementById('txtEmail').value = '';
+                            document.getElementById('txtMobile').value = '';
+                            // document.getElementById('txtOTP').value = '';
+                            document.getElementById('selectCity').value = 'Select City';
+                        })
+                        .catch(function (error) {
+                            // Handle the error
+                            console.error(error);
+                            // Display an error message to the user
+                            alert('Error submitting the form. Please try again later.');
+                        });
+                }
+                // Attach event listener to the form submit button
+                var submitButton = document.getElementById('btnSubmit');
+                submitButton.addEventListener('click', submitForm);
+            </script>
+            <form id="callForm"
+                style="background-color: #fff; padding: 5px; border-radius: 6px; border: 1px solid #052d47;">
+                <h2>Get A Call From Our Product Expert</h2>
+                <div class="formsact">
+                    <div id="input_container">
+                        <input type="text" id="txtFullname" class="input" placeholder="Full Name" required />
+                        <img src="img/user.png" class="input_img">
+                    </div>
+                    <div id="input_container">
+                        <input type="email" id="txtEmail" class="input" placeholder="Email" required />
+                        <img src="img/mail.png" class="input_img">
+                    </div>
+                    <div id="input_container">
+                        <input type="text" id="txtMobile" class="input" maxlength="10" placeholder="Mobile" required />
+                        <img src="img/phone.png" class="input_img">
+                        <div class="getotp">
+                            <input class="btn btn-primary" type="button" value="OTP" onclick="sendOTP()" />
+                        </div>
+                    </div>
+                    <div id="input_container">
+                        <input type="text" id="txtOTP" class="input" maxlength="10" placeholder="OTP" required />
+                        <img src="img/phone.png" class="input_img">
+                    </div>
+                    <div id="input_container">
+                        <select id="selectCity" class="form-control" required>
+                            <option value="">Select City</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Bareilly">Bareilly</option>
+                            <!-- Add more city options here -->
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                    <button type="submit" id="btnSubmit">Submit Details</button>
+                    <p class="para">I authorize Edelweiss Tokio Life Insurance or its partner to contact me with
+                        reference to the enquiry. This overrides the DND registration of TRAI.</p>
+                </div>
+            </form>
+
+
+            
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        </div>
+    </section>
+    <section>
+        <div class="row" id="feature">
+            <a id="feat"></a>
+            <div class="col-md-12 features">
+                <h2>
+                    <span>KEY FEATURES</span>
+                </h2>
+                <h3>KEY FEATURES</h3>
+                <div style="margin-top: 5vh;">
+                    <div class="col-md-12">
+                        <div class="col-md-3 pt-20 pb-20" align="center">
+                            <img src="img/f4.png">
+                            <h4>Additional ALLOCATION
+                                <br>
+                                to the fund
+                            </h4>
+                            <p>Every year, additional allocations are added to the fund. These allocations start at 1%
+                                &amp; increases every 5 years to 3%, 5%, and 7% </p>
+                        </div>
+                        <div class="col-md-3 pt-20 pb-20" align="center">
+                            <img src="img/f1.png">
+                            <h4>NO ALLOCATION
+                                <br>
+                                AND ADMINISTRATION CHARGES
+                            </h4>
+                            <p>100% of your premium is invested into the funds as per your chosen investment strategy.
+                            </p>
+                        </div>
+                        <div class="col-md-3 pt-20 pb-20" align="center">
+                            <img src="img/f2.png">
+                            <h4>Unlimited Switches<br>
+                                Based on risk Appetite </h4>
+                            <p>
+                                You have the flexibility
+                                <br>
+                                to switch between high rated funds<br>
+                                as per your risk Appetite.
+                            </p>
+                        </div>
+                        <div class="col-md-3 pt-20 pb-20" align="center">
+                            <img src="img/f3.png">
+                            <h4>Rising Star Benefits </h4>
+                            <p>On death of the parent, a lumpsum will be paid immediately. All future premiums will be
+                                waived off &amp; credited to your fund value &amp; additional allocation will be added
+                                to the policy as and when due.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <a id="video"></a>
+    <section class="pt-80 pb-50">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="wd-box">
+                    <div class="titlewd"> 4 Reasons to
+                        choose this plan </div>
+                    <div class="wd-item">
+                        <img src="./img/i1.png">
+                        <p> Secure your
+                            family’s financial
+                            future through
+                            life insurance cover </p>
+                    </div>
+                    <div class="wd-item">
+                        <img src="./img/i2.png">
+                        <p> Choose from a bouquet of
+                            benefit types with our three
+                            plan options: Flexi-Income
+                            Plan Option, Flexi-Income
+                            PRO Plan Option and Large
+                            Sum Plan Option </p>
+                    </div>
+                    <div class="wd-item">
+                        <img src="./img/i3.png">
+                        <p> Option to secure your
+                            Life beyond Maturity with
+                            Life Cover Continuation
+                            Benefit </p>
+                    </div>
+                    <div class="wd-item">
+                        <img src="./img/i4.png">
+                        <p> Options to receive income*
+                            as early as 2nd* Policy Year
+                            or 5th Policy Year or after
+                            premium paying term </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="pt-30 pb-30">
+        <div class="container">
+            <h1>DISCLAIMER</h1>
+            <ul class="pt-50">
+                <li>*Under this benefit, Policyholder/Proposer can be a Parent / Grand-parent / guardian or any person
+                    who has an insurable interest with the insured child.</li>
+
+                <li>Disclaimer - IN UNIT LINKED INSURANCE PLAN (ULIP), INVESTMENT RISK IN THE INVESTMENT PORTFOLIO IS
+                    BORNE BY THE POLICYHOLDER.</li>
+                <li>Unit Linked Life Insurance products are different from the traditional insurance products and are
+                    subject to the risk factors. Edelweiss Tokio Life Insurance is only the name of the Insurance
+                    Company and Edelweiss Tokio Life – Wealth Plus is only the name of the unit-linked life insurance
+                    contract and does not in any way indicate the quality of the contract, its future prospects, or
+                    returns. The various funds offered under this contract are the names of the funds and do not in any
+                    way indicate the quality of these plans, their future prospects and returns. Please know the
+                    associated risks and the applicable charges from your Personal Financial Advisor or the Intermediary
+                    or policy document of the Insurer .</li>
+                <li>The premium paid in unit linked life insurance policies are subject to investment risk associated
+                    with capital markets and the unit price of the units may go up or down based on the performance of
+                    investment fund and factors influencing the capital market and the policyholder is responsible for
+                    his/her decisions. Tax benefits are subject to changes in the tax laws.</li>
+                <li>For more details on the risk factors, terms and conditions, please read the sales brochure carefully
+                    before concluding a sale.</li>
+                <li>Edelweiss Tokio Life Insurance Company Limited | IRDAI Regn. No.: 147 | CIN: U66010MH2009PLC197336 |
+                    Product UIN: 147L055V01 | Advt. No.: WLa/18/Nov 2017 Registered Office: Edelweiss House, Off CST
+                    Road, Kalina, Mumbai 400098 </li>
+                <li>Corporate Office Address: 3rd & 4th Floor, Tower 3, Wing ‘B’, Kohinoor City, Kirol Road, Kurla (W),
+                    Mumbai - 400070 Toll Free No.: 1800 212 1212 | Fax No.: +91 22 7100 4133 | www.edelweisstokio.in
+                </li>
+                <li>Flower & Edelweiss are trademarks of Edelweiss Financial Services Limited; Tokio is Trademark of
+                    Tokio Marine Holdings Inc. and used by Edelweiss Tokio Life Insurance Co. Ltd. under license </li>
+            </ul>
+            <div class="clearfix"></div>
+            <br>
+
+            <h3 style="color: #f15a22">BEWARE OF SPURIOUS PHONE CALLS AND FICTITIOUS / FRAUDULENT OFFERS</h3>
+            IRDAI clarifies to public that<br>
+            – IRDAI or its officials do not involve in activities like sale of any kind of insurance or financial
+            products nor invest premiums.<br>
+            – IRDAI does not announce any bonus.<br>
+            – Public receiving such phone calls are requested to lodge a police complaint along with details of phone
+            call, number.
+
+        </div>
+    </footer>
+    <section class="subfoot">
+        <div class="row" style="width: 100%; background: #034ea2; padding: 0; margin: 0">
+            <div class="col s12" style="margin-top: 8vh; margin-bottom: 1vh;" align="center">
+
+                <h5 align="center" style="font-weight: bold; color: #fff; text-transform: uppercase; margin-bottom: 2%">
+                    CONTACT & FOLLOW US </h5>
+                <a href="https://www.facebook.com/EdelweissTokioLife" target="_blank">
+                    <img src="img/facebook.png" align="center"></a>
+                <a href="https://twitter.com/edelweiss_tokio" target="_blank">
+                    <img src="img/twitter.png" align="center" style="margin-left: 2%;"></a>
+                <a href="https://in.linkedin.com/company/edelweiss-tokio-life-insurance">
+                    <img src="img/linkedin.png" align="center" style="margin-left: 2%;"></a>
+                <p align="center" style="font-weight: normal; color: #fff; font-size: 20px;">
+                    Privacy Policy | Terms & Conditions
+                </p>
+                <hr style="background-color: #fff; width: 80%">
+                <p align="center" style="font-weight: normal; color: #fff; font-size: 20px;">
+                    &copy 2017 Edelweiss Tokio Life Insurance Company Ltd. All rights reserved
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
