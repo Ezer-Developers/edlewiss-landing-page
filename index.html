@@ -59,17 +59,17 @@
                 // Function to handle form submission
                 function submitForm(event) {
                     event.preventDefault(); // Prevent the default form submission
-        
+
                     // Get form inputs
                     var fullName = document.getElementById('txtFullname').value;
                     var email = document.getElementById('txtEmail').value;
                     var mobile = document.getElementById('txtMobile').value;
                     var otp = document.getElementById('txtOTP').value;
                     var city = document.getElementById('selectCity').value;
-        
+
                     // Validate form inputs
                     // Perform necessary validations on the inputs (e.g., check if required fields are filled, validate email/phone format, etc.)
-        
+
                     // Prepare the request JSON data
                     var requestData = {
                         "AffiliateCode": "A001",
@@ -97,7 +97,7 @@
                         "DirectAssignment": null,
                         "AgentCode": ""
                     };
-        
+
                     // Make the API request
                     fetch('https://sams.edelweisstokio.in/Wrapper/api/lead/WebAggregateSaveLead', {
                         method: 'POST',
@@ -137,38 +137,64 @@
                 var submitButton = document.getElementById('btnSubmit');
                 submitButton.addEventListener('click', submitForm);
             </script>
-            <form id="callForm"
+            <form id="callForm" action="https://sams.edelweisstokio.in/Wrapper/api/lead/WebAggregateSaveLead"
+                method="post"
                 style="background-color: #fff; padding: 5px; border-radius: 6px; border: 1px solid #052d47;">
                 <h2>Get A Call From Our Product Expert</h2>
                 <div class="formsact">
+                    <input type="text" id="AffiliateCode" name="AffiliateCode" value="A001" style="display: none;">
                     <div id="input_container">
-                        <input type="text" id="txtFullname" class="input" placeholder="Full Name" required />
+                        <input type="text" id="F_Name" name="F_Name" class="input" placeholder="First Name" required />
                         <img src="img/user.png" class="input_img">
                     </div>
                     <div id="input_container">
-                        <input type="email" id="txtEmail" class="input" placeholder="Email" required />
+                        <input type="text" id="L_Name" name="L_Name" class="input" placeholder="Last Name" required />
+                        <img src="img/user.png" class="input_img">
+                    </div>
+                    <div id="input_container">
+                        <input type="email" id="EmailID" name="EmailID" class="input" placeholder="Email" required />
                         <img src="img/mail.png" class="input_img">
                     </div>
                     <div id="input_container">
-                        <input type="text" id="txtMobile" class="input" maxlength="10" placeholder="Mobile" required />
+                        <input type="text" id="MobileNumber" name="MobileNumber" class="input" maxlength="10"
+                            placeholder="Mobile Number" required />
                         <img src="img/phone.png" class="input_img">
                         <div class="getotp">
                             <input class="btn btn-primary" type="button" value="OTP" onclick="sendOTP()" />
                         </div>
                     </div>
                     <div id="input_container">
-                        <input type="text" id="txtOTP" class="input" maxlength="10" placeholder="OTP" required />
+                        <input type="text" id="txtOTP" class="input" maxlength="10" placeholder="OTP" />
                         <img src="img/phone.png" class="input_img">
                     </div>
                     <div id="input_container">
-                        <select id="selectCity" class="form-control" required>
-                            <option value="">Select City</option>
-                            <option value="Ahmedabad">Ahmedabad</option>
-                            <option value="Bangalore">Bangalore</option>
-                            <option value="Bareilly">Bareilly</option>
-                            <!-- Add more city options here -->
+                        <select id="City" name="City" class="form-control" required>
+                            <option value="MH001">Select City</option>
+                            <option>Ahmedabad</option>
+                            <option>Bangalore</option>
+                            <option>Bareilly</option>
+                            <option>Chennai</option>
+                            <option>Cochin</option>
+                            <option>Coimbatore</option>
+                            <option>Delhi</option>
+                            <option>Hyderabad</option>
+                            <option>Indore</option>
+                            <option>Kanpur</option>
+                            <option>Kolkata</option>
+                            <option>Lucknow</option>
+                            <option>Mumbai</option>
+                            <option>Madurai</option>
+                            <option>Nagpur</option>
+                            <option>Noida</option>
+                            <option>Pune</option>
+                            <option>Vadodara</option>
+                            <option>Vijaywada</option>
+                            <option>Vizag</option>
                         </select>
                     </div>
+                    <input type="text" id="State" name="State" value="18" style="display: none;">
+                    <input type="text" id="SubCampaignCode" name="SubCampaignCode" value="C001" style="display: none;">
+                    <input type="text" id="CampaignCode" name="CampaignCode" value="CM01" style="display: none;">
                     <div class="clearfix"></div>
                     <button type="submit" id="btnSubmit">Submit Details</button>
                     <p class="para">I authorize Edelweiss Tokio Life Insurance or its partner to contact me with
@@ -176,8 +202,33 @@
                 </div>
             </form>
 
-
-            
+            <script>
+                function sendOTP() {
+                    const data = null;
+                    const xhr = new XMLHttpRequest();
+                    xhr.withCredentials = true;
+        
+                    xhr.addEventListener('readystatechange', function () {
+                        if (this.readyState === this.DONE) {
+                            console.log(this.responseText);
+                            // You can perform additional actions here with the response data
+                        }
+                    });
+        
+                    xhr.open('GET', 'https://d7-verify.p.rapidapi.com/messages/v1/balance');
+                    xhr.setRequestHeader('Token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoLWJhY2tlbmQ6YXBwIiwic3ViIjoiMTZmZmZkNDYtZTdkNi00ZDNmLWIxN2YtMGZkZDI2NWEzODYxIn0.Ff3jbxymFoOk0wq7pmcMPuc60oo1E468GuvkRN7xuYU');
+                    xhr.setRequestHeader('X-RapidAPI-Key', 'fb071b958fmsh3788531660a39f6p179a78jsn3df1f96b14df');
+                    xhr.setRequestHeader('X-RapidAPI-Host', 'd7-verify.p.rapidapi.com');
+        
+                    xhr.send(data);
+                }
+        
+                // Add an event listener to the button
+                const btnSubmit = document.getElementById('txtOTP');
+                btnSubmit.addEventListener('click', function(event) {
+                    sendOTP(); // Call the sendOTP function when the button is clicked
+                });
+            </script>
         </div>
         <div class="clearfix"></div>
         <br>
