@@ -201,34 +201,6 @@
                         reference to the enquiry. This overrides the DND registration of TRAI.</p>
                 </div>
             </form>
-
-            <script>
-                function sendOTP() {
-                    const data = null;
-                    const xhr = new XMLHttpRequest();
-                    xhr.withCredentials = true;
-        
-                    xhr.addEventListener('readystatechange', function () {
-                        if (this.readyState === this.DONE) {
-                            console.log(this.responseText);
-                            // You can perform additional actions here with the response data
-                        }
-                    });
-        
-                    xhr.open('GET', 'https://d7-verify.p.rapidapi.com/messages/v1/balance');
-                    xhr.setRequestHeader('Token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoLWJhY2tlbmQ6YXBwIiwic3ViIjoiMTZmZmZkNDYtZTdkNi00ZDNmLWIxN2YtMGZkZDI2NWEzODYxIn0.Ff3jbxymFoOk0wq7pmcMPuc60oo1E468GuvkRN7xuYU');
-                    xhr.setRequestHeader('X-RapidAPI-Key', 'fb071b958fmsh3788531660a39f6p179a78jsn3df1f96b14df');
-                    xhr.setRequestHeader('X-RapidAPI-Host', 'd7-verify.p.rapidapi.com');
-        
-                    xhr.send(data);
-                }
-        
-                // Add an event listener to the button
-                const btnSubmit = document.getElementById('txtOTP');
-                btnSubmit.addEventListener('click', function(event) {
-                    sendOTP(); // Call the sendOTP function when the button is clicked
-                });
-            </script>
         </div>
         <div class="clearfix"></div>
         <br>
