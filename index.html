@@ -55,88 +55,7 @@
         <div class="col-md-4 col-md-offset-8 forms">
 
 
-            <script>
-                // Function to handle form submission
-                function submitForm(event) {
-                    event.preventDefault(); // Prevent the default form submission
-
-                    // Get form inputs
-                    var fullName = document.getElementById('txtFullname').value;
-                    var email = document.getElementById('txtEmail').value;
-                    var mobile = document.getElementById('txtMobile').value;
-                    var otp = document.getElementById('txtOTP').value;
-                    var city = document.getElementById('selectCity').value;
-
-                    // Validate form inputs
-                    // Perform necessary validations on the inputs (e.g., check if required fields are filled, validate email/phone format, etc.)
-
-                    // Prepare the request JSON data
-                    var requestData = {
-                        "AffiliateCode": "A001",
-                        "F_Name": fullName,
-                        "M_Name": "",
-                        "L_Name": "",
-                        "MobileNumber": mobile,
-                        "AltMobileOrLandLine": "",
-                        "State": 18,
-                        "City": city,
-                        "Pincode": "",
-                        "AffiliatePitchText": "",
-                        "Age": "",
-                        "DateofBirth": "",
-                        "Income": "",
-                        "Profession": "",
-                        "MaritalStatus": "",
-                        "NumberofChildren": "",
-                        "ITRfiled": null,
-                        "NoOfYearsinBusiness": "",
-                        "LOB": "",
-                        "SubCampaignCode": "",
-                        "CampaignCode": "",
-                        "EmailID": email,
-                        "DirectAssignment": null,
-                        "AgentCode": ""
-                    };
-
-                    // Make the API request
-                    fetch('https://sams.edelweisstokio.in/Wrapper/api/lead/WebAggregateSaveLead', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(requestData)
-                    })
-                        .then(function (response) {
-                            // Handle the API response
-                            if (response.ok) {
-                                return response.json();
-                            } else {
-                                throw new Error('Error: ' + response.status);
-                            }
-                        })
-                        .then(function (data) {
-                            // Handle the success response
-                            console.log(data);
-                            // Display a success message to the user
-                            alert('Form submitted successfully!');
-                            // Reset the form fields
-                            document.getElementById('txtFullname').value = '';
-                            document.getElementById('txtEmail').value = '';
-                            document.getElementById('txtMobile').value = '';
-                            // document.getElementById('txtOTP').value = '';
-                            document.getElementById('selectCity').value = 'Select City';
-                        })
-                        .catch(function (error) {
-                            // Handle the error
-                            console.error(error);
-                            // Display an error message to the user
-                            alert('Error submitting the form. Please try again later.');
-                        });
-                }
-                // Attach event listener to the form submit button
-                var submitButton = document.getElementById('btnSubmit');
-                submitButton.addEventListener('click', submitForm);
-            </script>
+            
             <form id="callForm" action="https://sams.edelweisstokio.in/Wrapper/api/lead/WebAggregateSaveLead"
                 method="post"
                 style="background-color: #fff; padding: 5px; border-radius: 6px; border: 1px solid #052d47;">
@@ -201,6 +120,9 @@
                         reference to the enquiry. This overrides the DND registration of TRAI.</p>
                 </div>
             </form>
+
+
+
         </div>
         <div class="clearfix"></div>
         <br>
