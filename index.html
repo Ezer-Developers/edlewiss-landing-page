@@ -8,15 +8,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wealth Plus - Landing Page</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <script src="./js/script.js"></script>
-    <script src="./js/jquery.min.js"></script>
-    <link href="./css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="css/custom-padding.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-padding.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -55,9 +52,8 @@
         <div class="col-md-4 col-md-offset-8 forms">
 
 
-            
-            <form id="callForm" action="https://sams.edelweisstokio.in/Wrapper/api/lead/WebAggregateSaveLead"
-                method="post"
+
+            <form id="callForm"
                 style="background-color: #fff; padding: 5px; border-radius: 6px; border: 1px solid #052d47;">
                 <h2>Get A Call From Our Product Expert</h2>
                 <div class="formsact">
@@ -120,6 +116,41 @@
                         reference to the enquiry. This overrides the DND registration of TRAI.</p>
                 </div>
             </form>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    // Function to handle form submission
+                    $("#callForm").submit(function (event) {
+                        event.preventDefault(); // Prevent the default form submission
+
+                        // Get the form data
+                        var formData = $(this).serialize();
+
+                        // Make the AJAX request to the API
+                        $.ajax({
+                            url: "https://sams.edelweisstokio.in/Wrapper/api/lead/WebAggregateSaveLead",
+                            type: "POST",
+                            data: formData,
+                            success: function (response) {
+                                // Handle the API response
+                                console.log("API call successful:", response);
+
+                                // Show the response on the page
+                                $(".response-message pre").text(JSON.stringify(response));
+                                $(".response-message").show();
+                            },
+                            error: function (xhr, status, error) {
+                                // Handle errors, if any
+                                console.error("API call failed:", status, error);
+
+                                // Show the error on the page
+                                $(".response-message pre").text("Error occurred while making the API request.");
+                                $(".response-message").show();
+                            }
+                        });
+                    });
+                });
+            </script>
 
 
 
