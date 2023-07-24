@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon.eot');
+	src:url('../fonts/icomoon/icomoond41d.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.woff') format('woff'),
+		url('../fonts/icomoon/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{font-size: 16px; font-family: 'Muli', sans-serif;}
+
+header{}
+
+
+.feat1 img{ text-align: center; margin: 0 auto; display: block;}
+.feat1 p{color: #fff; font-weight: bold; font-size: 16px;}
+.feat1 span{color: #fff; font-weight: lighter}
+
+.slider{ background: url(../img/banner.jpg) no-repeat; background-position: top; background-size: cover; }
+
+
+
+.forms h2{font-weight: bold; font-size: 20px; text-align: center; padding-top: 6%; margin-bottom: 5%;}
+
+.formsact { padding:10px 20px;}
+.formsact p{ color: #b3b3b3 !important; font-size: 10px; text-align: center;}
+.formsact input{ width: 100%; border-bottom: 1px solid #b2b2b2; border-left: none; border-right: none; border-top: none;}
+.formsact input:focus{ padding-left:60px !important;}
+.formsact select{ width: 100%; border-bottom: 1px solid #b2b2b2; border-left: none; border-right: none; border-top: none;}
+
+.formsact button{ background-color: #052d47; border: none; width: 100%; border-radius:3px; margin:10px 5px; color: #FFF; padding: 10px 15px; display: block;}
+
+.formsact input::placeholder{ color: #b2b2b2; padding-left: 35px;}
+.formsact #input_container {
+    position:relative;
+    padding:0 !important;
+    margin:10px 0;
+	width: 100%;
+}
+.formsact .input {
+    margin:0;
+	padding: 10px 50px;
+}
+.formsact .input_img {
+    position:absolute;
+    bottom:8px;
+    left:10px;
+}
+
+
+
+
+.features h2{ font-weight:700; text-transform: uppercase; color: #000; text-align: center; line-height: 30px;}
+.features h2 span{color: #969696; font-size: 20px;}
+.features h3{color: #000; font-size: 18px; font-weight: bold; text-transform: uppercase;}
+.features h4{color: #000; font-size: 18px; font-weight: bold; text-transform: uppercase;}
+.features p{color: #999999; font-size: 15px;}
+
+footer {color: #a8a8a8;}
+footer h1{ text-align: center; color: #000; font-size: 25px; font-weight: 800;}
+footer h3{  font-size: 18px;}
+footer ul{ display: block}
+footer ul li{ color: #a8a8a8; margin: 15px 0px; display: list-item; list-style: disc;}
+
+
+
+@media only screen
+and (max-device-width:320px)
+and (orientation:portrait){
+	.header{ display: inherit !important;}
+	.header img{ display: block !important; margin: 0 auto !important; text-align: center}
+	.slider{ background: none;}
+}
+
+@media only screen
+and (min-device-width:321px)
+and (orientation:portrait){
+}
+
+@media only screen
+and (min-device-width:360px)
+and (max-device-width:640px){
+	header{ display: none !important;}
+	.header{ display: inherit !important;}
+	.header img{ display: block !important; margin: 0 auto !important; text-align: center}
+	.slider{ background: none; min-height: 270px !important;}
+ 
+	.heading h2{ color: #052d47; font-weight: 600; font-size: 20px; margin: 20px 0px; text-align: center;}
+	.heading h2 span{ color: #e95016; font-weight: bolder;}
+	.callbtn{ margin: 0px 0px;}
+	.callbtn button{ display: block; margin: 0 auto; width: 100%; border: 1px solid #052d47; background: #052d47; padding:0; color: #FFF; border-radius:3px; font-size: 25px; margin:20px 0px 0 0;}
+	.callbtn span{font-size: 30px; color:#FFF; padding: 15px; }
+	.callbtn img{ padding: 10px 15px;}
+	.callbtn p{ text-align: center; font-size: 22px; line-height: 20px; color: #FFF; margin: 0 auto; margin-top: 4px;}
+	.callbtn p span{ font-size:13px;}
+	.features h2{ display: none;}
+	.features h3 { font-size: 28px; text-align: center; color: #969696;}
+}
+
+@media(max-width:767px){
+
+}
+
+@media only screen
+and (min-device-width:600px)
+and (orientation:portrait){
+	header{ display: none !important;}
+	.header{ display: inherit !important;}
+	.header img{ display: block !important; margin: 0 auto !important; text-align: center}
+	.slider{ background: none; min-height: 0px !important;}
+	.callbtn button{ background: #052d47; border: none; border-radius:3px;}
+}
+
+@media only screen
+and (min-device-width:768px)
+and (orientation:portrait){
+
+	
+header{ display: none !important;}
+	.header{ display: inherit !important;}
+	.header img{ display: block !important; margin: 0 auto !important; text-align: center}	
+	.slider{ background: none;}
+ 
+}
+
+@media only screen
+and (min-device-width:1024px)
+and (orientation:landscape){
+	.wplogo{ width: 70%; float: right}
+	.header{ display: none !important;}	
+	.features h3{ display: none;}
+	.features{ padding: 50px 15px;}
+	.slider{ min-height: 600px;}
+
+}
+
+@media(max-width:1199px){
+
+}
+
+@media only screen
+and (min-device-width:1360px)
+and (orientation:landscape){
+	.wplogo{ width: 70%; float: right
+	.header{ display: none !important;}		
+}
+
