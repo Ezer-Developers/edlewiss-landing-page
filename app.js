@@ -1,22 +1,16 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const bodyParser = require('body-parser'); // This module is required to parse form data
 
-// Set up the body-parser middleware to parse incoming form data
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Set the folder for serving static files (e.g., your HTML templates)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Replace the Twilio code with the code below
 
-// Function to generate a random 4-digit OTP
 function generateOTP() {
     return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
-// Route to send OTP via Twilio
 app.post('/send-otp', (req, res) => {
     const twilio = require('twilio');
     const accountSid = 'ACc092492efda9db10cd0387ba6e4bc29c';
@@ -42,8 +36,7 @@ app.post('/send-otp', (req, res) => {
         });
 });
 
-// Start the server
-const port = 3000; // You can choose any available port
+const port = 3000;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
