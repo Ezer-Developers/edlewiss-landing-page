@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser'); 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 function generateOTP() {
     return Math.floor(1000 + Math.random() * 9000).toString();
@@ -18,11 +18,10 @@ app.post('/send-otp', (req, res) => {
     const client = new twilio(accountSid, authToken);
 
     const otp = generateOTP();
-    const recipientNumber = req.body.recipientNumber; // Get the recipientNumber from the request body
-
+    const recipientNumber = req.body.recipientNumber; 
     client.messages
         .create({
-            from: '+12179200182', // Replace with your Twilio phone number
+            from: '+12179200182', 
             to: recipientNumber,
             body: `Your OTP for verification is: ${otp}`,
         })
@@ -36,7 +35,7 @@ app.post('/send-otp', (req, res) => {
         });
 });
 
-const port = 3000;
+const port = 8000; 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
